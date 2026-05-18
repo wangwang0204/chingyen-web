@@ -46,35 +46,73 @@
 <body x-data="{ mobileMenuOpen: false }">
     <header>
         <nav>
-            <a href="/" class="logo" style="display: flex; align-items: center; gap: 10px;">
-                <img src="/static/images/brand/logo.png" alt="金燕" style="height: 40px; width: auto; display: block;" onerror="this.style.display='none'">
-                <span>金燕 CHINGYEN</span>
+            <a href="/" class="logo">
+                <img src="/static/images/brand/logo.png" alt="金燕" style="height: 45px; width: auto;" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <span class="brand-name">金燕 CHINGYEN</span>
+                    <span class="brand-tagline">傳統中醫 · 現代守護</span>
+                </div>
             </a>
             
             <!-- Desktop Menu -->
             <ul class="nav-links">
                 {% for menu in menus %}
                     <li class="nav-item">
-                        <a href="{{ '/products' if menu.id == 17 else ('/about' if menu.id == 11 else '/') }}">
+                        {% set link = '#' %}
+                        {% if menu.id == 1 %}{% set link = '/' %}
+                        {% elif menu.id == 11 %}{% set link = '/about' %}
+                        {% elif menu.id == 17 %}{% set link = '/products' %}
+                        {% elif menu.id == 21 %}{% set link = '/team' %}
+                        {% elif menu.id == 37 %}{% set link = '/contact' %}
+                        {% endif %}
+                        
+                        <a href="{{ link }}" class="{% if request.url.path == link %}active{% endif %}">
                             {{ menu.title }}
                         </a>
+                        
                         {% if menu.children %}
                         <ul class="dropdown">
                             {% for child in menu.children %}
-                                <li><a href="#">{{ child.title }}</a></li>
+                                <li><a href="{{ link }}">{{ child.title }}</a></li>
                             {% endfor %}
+                            {% if menu.id == 11 %}
+                                <li><a href="/team">醫療團隊</a></li>
+                            {% endif %}
                         </ul>
                         {% endif %}
                     </li>
                 {% endfor %}
             </ul>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen">
-                <span x-show="!mobileMenuOpen">☰</span>
-                <span x-show="mobileMenuOpen">✕</span>
-            </button>
+            <div class="nav-actions">
+                <a href="/contact" class="btn btn-primary">立即諮詢</a>
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen">
+                    <span x-show="!mobileMenuOpen">☰</span>
+                    <span x-show="mobileMenuOpen">✕</span>
+                </button>
+            </div>
         </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" x-show="mobileMenuOpen" x-transition @click.away="mobileMenuOpen = false">
+            <ul>
+                {% for menu in menus %}
+                <li>
+                    {% set link = '#' %}
+                    {% if menu.id == 1 %}{% set link = '/' %}
+                    {% elif menu.id == 11 %}{% set link = '/about' %}
+                    {% elif menu.id == 17 %}{% set link = '/products' %}
+                    {% elif menu.id == 21 %}{% set link = '/team' %}
+                    {% elif menu.id == 37 %}{% set link = '/contact' %}
+                    {% endif %}
+                    <a href="{{ link }}">{{ menu.title }}</a>
+                </li>
+                {% endfor %}
+                <li><a href="/team">醫療團隊</a></li>
+                <li><a href="/contact" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">立即諮詢</a></li>
+            </ul>
+        </div>
     </header>
 
     <main>
@@ -87,9 +125,19 @@
             <div>
                 <h4>{{ menu.title }}</h4>
                 <ul>
+                    {% set link = '#' %}
+                    {% if menu.id == 1 %}{% set link = '/' %}
+                    {% elif menu.id == 11 %}{% set link = '/about' %}
+                    {% elif menu.id == 17 %}{% set link = '/products' %}
+                    {% elif menu.id == 21 %}{% set link = '/team' %}
+                    {% elif menu.id == 37 %}{% set link = '/contact' %}
+                    {% endif %}
                     {% for child in menu.children %}
-                    <li><a href="#">{{ child.title }}</a></li>
+                    <li><a href="{{ link }}">{{ child.title }}</a></li>
                     {% endfor %}
+                    {% if menu.id == 11 %}
+                        <li><a href="/team">醫療團隊</a></li>
+                    {% endif %}
                 </ul>
             </div>
             {% endfor %}

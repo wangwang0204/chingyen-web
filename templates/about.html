@@ -1,23 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section>
-    <h1 style="color: var(--color-red); margin-bottom: 2rem;">關於我們</h1>
-    <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-        <h2 style="color: var(--color-gold); margin-bottom: 1rem;">公司簡介</h2>
-        <p style="margin-bottom: 2rem;">
-            金燕 (Chingyen) 成立於 1990 年代，始終秉持著「誠信、專業、守護健康」的經營理念。我們專注於高品質中藥材的進口與推廣，並結合現代化管理與傳統中醫藥精華，致力於為每一位客戶提供最安全、最有效的漢方調理方案。
-        </p>
-        
-        <h2 style="color: var(--color-gold); margin-bottom: 1rem;">經營理念</h2>
-        <p style="margin-bottom: 2rem;">
-            我們相信，健康的根本在於「調和」。透過天然的藥材與專業的醫理，我們幫助客戶找回身體的平衡。
-        </p>
+<div class="container">
+<section style="padding: 4rem 0;">
+    <div class="section-header">
+        <h1>關於金燕 CHINGYEN</h1>
+        <p>傳統漢方的守護者，現代健康的伴侶</p>
+    </div>
 
-        <h2 style="color: var(--color-gold); margin-bottom: 1rem;">執照認證</h2>
-        <p>
-            我們所有的醫師均具備合格執照，所有進口藥材均通過嚴格的國家級安全檢驗，確保無重殘、無農藥殘留。
-        </p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: start;">
+        <div>
+            <h2 style="color: var(--color-red); margin-bottom: 1.5rem; font-size: 2rem;">公司簡介</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #444;">
+                金燕 (Chingyen) 成立於 1990 年代，始終秉持著「誠信、專業、守護健康」的經營理念。我們座落於吉隆坡的核心地帶，服務超過三萬名客戶，是當地最受信賴的中醫藥品牌之一。
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #444;">
+                我們不僅提供頂級的中藥材，更擁有一支具備深厚學術背景與豐富臨床經驗的醫療團隊。透過「醫藥結合」的模式，我們能更準確地為客戶提供個性化的健康管理建議。
+            </p>
+            
+            <h2 style="color: var(--color-red); margin-bottom: 1.5rem; font-size: 2rem; margin-top: 3rem;">經營理念</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-top: 4px solid var(--color-gold);">
+                    <h3 style="color: var(--color-gold); margin-bottom: 0.5rem;">誠信正道</h3>
+                    <p style="font-size: 0.9rem;">堅持選用正宗道地藥材，不參假、不誤導。</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-top: 4px solid var(--color-gold);">
+                    <h3 style="color: var(--color-gold); margin-bottom: 0.5rem;">專業至上</h3>
+                    <p style="font-size: 0.9rem;">醫師與藥師定期進修，掌握最新醫療動態。</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img src="/static/images/store/hero-banner.jpg" alt="金燕店面" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800'">
+            
+            <div style="margin-top: 3rem; background: var(--color-red); color: white; padding: 2rem; border-radius: 12px;">
+                <h3 style="color: var(--color-khaki); margin-bottom: 1rem;">執照與認證</h3>
+                <ul style="list-style: none; font-size: 1rem;">
+                    <li style="margin-bottom: 1rem;">• 馬來西亞衛生部 (MOH) 註冊中醫師</li>
+                    <li style="margin-bottom: 1rem;">• 具備合法中藥零售與進口准證</li>
+                    <li style="margin-bottom: 1rem;">• 所有藥材符合重金屬與微生物檢驗標準</li>
+                    <li>• 榮獲多項在地傳統醫藥傑出貢獻獎</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

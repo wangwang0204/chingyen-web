@@ -1,33 +1,82 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/store/hero-banner.jpg');">
-    <h1 style="font-size: 3rem; margin-bottom: 1rem;">傳承漢方精華，守護家人健康</h1>
-    <p style="font-size: 1.25rem; margin-bottom: 2rem;">金燕 (Chingyen) 數位型錄 - 您最信賴的中醫藥夥伴</p>
-    <a href="/products" class="btn">瀏覽產品目錄</a>
-</section>
-
-<section style="margin-top: 4rem;">
-    <h2 style="text-align: center; color: var(--color-red); margin-bottom: 3rem;">我們的核心服務</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="card-content">
-                <h3 class="card-title">名貴藥材</h3>
-                <p>提供天池雪蛤膏、西藏冬蟲夏草、印尼金絲燕等頂級滋補藥材。</p>
+<section class="hero-container">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>傳承漢方精華<br>守護家人健康</h1>
+            <p>金燕 (Chingyen) 數位型錄 - 您最信賴的中醫藥夥伴。我們結合二十餘年的臨床經驗與高品質藥材，為您提供最專業的健康守護。</p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="/products" class="btn btn-primary">瀏覽產品目錄</a>
+                <a href="/about" class="btn btn-outline" style="border-color: var(--color-khaki); color: var(--color-khaki);">了解關於我們</a>
             </div>
         </div>
-        <div class="card">
-            <div class="card-content">
-                <h3 class="card-title">專業醫療</h3>
-                <p>擁有超過 20 年經驗的中醫師團隊，提供把脈、針灸與全方位體質調理。</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <h3 class="card-title">養生配藥</h3>
-                <p>根據您的體質與需求，由專業中藥師為您量身打造專屬藥膳包。</p>
-            </div>
+        <div class="hero-image">
+            <img src="/static/images/store/hero-banner.jpg" alt="金燕中醫藥" onerror="this.src='https://images.unsplash.com/photo-1512036667332-20aea31d90e3?auto=format&fit=crop&q=80&w=800'">
         </div>
     </div>
 </section>
+
+<div class="container">
+    <section style="margin: 4rem 0;">
+        <div class="section-header">
+            <h2>我們的核心服務</h2>
+            <p>提供全方位的中醫藥解決方案</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img src="/static/images/products/prod-pearl-birdnest.jpg" class="card-image" alt="名貴藥材" onerror="this.src='https://images.unsplash.com/photo-1502741126161-b048400d085d?auto=format&fit=crop&q=80&w=500'">
+                <div class="card-content">
+                    <h3 class="card-title">名貴藥材</h3>
+                    <p class="card-text">精選天池雪蛤膏、西藏冬蟲夏草、印尼金絲燕等頂級滋補藥材，品質嚴格把關。</p>
+                    <a href="/products" class="btn btn-outline">查看詳情</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/static/images/team/doc-yan.jpg" class="card-image" alt="專業醫療" style="object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1e358ee?auto=format&fit=crop&q=80&w=500'">
+                <div class="card-content">
+                    <h3 class="card-title">專業醫療</h3>
+                    <p class="card-text">由顏成福、林美玉中醫師領軍，提供看體質把脈、針灸、婦兒科等專業診療。</p>
+                    <a href="/team" class="btn btn-outline">認識醫師</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&q=80&w=500" class="card-image" alt="養生配藥">
+                <div class="card-content">
+                    <h3 class="card-title">養生配藥</h3>
+                    <p class="card-text">根據個人體質與需求，由專業藥師為您量身打造專屬藥膳包與日常養生建議。</p>
+                    <a href="/contact" class="btn btn-outline">立即諮詢</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin: 6rem 0; background: white; padding: 4rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.03);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div>
+                <h2 style="font-size: 2.5rem; color: var(--color-red); margin-bottom: 1.5rem;">為何選擇金燕？</h2>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                        <span style="background: var(--color-red); color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">✓</span>
+                        <span>26 年深厚臨床經驗，看診精準</span>
+                    </li>
+                    <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                        <span style="background: var(--color-red); color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">✓</span>
+                        <span>嚴格篩選道地藥材，絕無人工添加</span>
+                    </li>
+                    <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                        <span style="background: var(--color-red); color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">✓</span>
+                        <span>現代化管理流程，確保用藥安全</span>
+                    </li>
+                </ul>
+            </div>
+            <div style="text-align: center;">
+                <div style="border: 10px solid var(--color-beige); padding: 2rem; display: inline-block;">
+                    <p style="font-size: 3rem; font-weight: bold; color: var(--color-red); margin: 0;">26+</p>
+                    <p style="font-size: 1.1rem; color: #666; margin: 0;">Years of Excellence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}

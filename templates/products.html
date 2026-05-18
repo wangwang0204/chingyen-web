@@ -1,19 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section>
-    <h1 style="color: var(--color-red); margin-bottom: 2rem;">產品資訊</h1>
+<div class="container">
+<section style="padding: 4rem 0;">
+    <div class="section-header">
+        <h1>產品目錄</h1>
+        <p>精選優質漢方藥材與養生產品，品質誠信保證</p>
+    </div>
     
     <!-- Filter Bar -->
-    <div class="filter-bar">
+    <div class="filter-bar" style="margin: 3rem 0; justify-content: center; gap: 1.5rem;">
         <button class="filter-btn active" 
+                style="padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600;"
                 hx-get="/htmx/products" 
                 hx-target="#product-grid"
                 @click="$el.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); $el.classList.add('active')">
-            全部
+            全部產品
         </button>
         {% for category in categories %}
             <button class="filter-btn" 
+                    style="padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600;"
                     hx-get="/htmx/products?category_id={{ category.id }}" 
                     hx-target="#product-grid"
                     @click="$el.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); $el.classList.add('active')">
@@ -23,8 +29,20 @@
     </div>
 
     <!-- Product Grid -->
-    <div id="product-grid" class="grid">
+    <div id="product-grid" class="grid" style="min-height: 400px;">
         {% include "partials/product_grid.html" %}
     </div>
+
+    <!-- CTA Section -->
+    <div style="margin-top: 6rem; background: var(--color-red); color: white; padding: 4rem; border-radius: 12px; display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; gap: 4rem;">
+        <div>
+            <h2 style="color: var(--color-khaki); font-size: 2.2rem; margin-bottom: 1rem;">需要批發或客製化配藥？</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9;">我們提供各大中醫診所與餐飲業優質藥材批發，亦可根據您的配方進行專業抓藥與代煎服務。</p>
+        </div>
+        <div style="text-align: right;">
+            <a href="/contact" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 3rem;">立即洽談</a>
+        </div>
+    </div>
 </section>
+</div>
 {% endblock %}

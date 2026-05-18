@@ -13,10 +13,7 @@ def init_db():
         session.execute(text("INSERT INTO menus (id, parent_id, title, level, sort_order, has_image) VALUES (11, NULL, '公司簡介', 1, 2, 0)"))
         session.execute(text("INSERT INTO menus (id, parent_id, title, level, sort_order, has_image) VALUES (17, NULL, '產品資訊', 1, 3, 0)"))
         session.execute(text("INSERT INTO menus (id, parent_id, title, level, sort_order, has_image) VALUES (21, NULL, '能力優勢', 1, 4, 0)"))
-        session.execute(text("INSERT INTO menus (id, parent_id, title, level, sort_order, has_image) VALUES (31, NULL, '服務支援', 1, 5, 0)"))
-        session.execute(text("INSERT INTO menus (id, parent_id, title, level, sort_order, has_image) VALUES (41, NULL, '人力資源', 1, 6, 0)"))
         session.execute(text("INSERT INTO menus (id, parent_id, title, level, sort_order, has_image) VALUES (37, NULL, '聯絡我們', 1, 7, 0)"))
-
         # 子選單
         session.execute(text("INSERT INTO menus (parent_id, title, level, sort_order) VALUES (11, '公司簡介', 2, 1)"))
         session.execute(text("INSERT INTO menus (parent_id, title, level, sort_order) VALUES (11, '經營理念', 2, 2)"))

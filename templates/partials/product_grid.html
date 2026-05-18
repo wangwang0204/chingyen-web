@@ -1,24 +1,37 @@
 {% for product in products %}
     <div class="card">
-        <img src="{{ product.image_path or 'https://via.placeholder.com/300x200?text=Chingyen' }}" 
+        <img src="{{ product.image_path }}" 
              alt="{{ product.name_zh }}" 
-             class="card-image">
+             class="card-image"
+             onerror="this.src='https://images.unsplash.com/photo-1502741126161-b048400d085d?auto=format&fit=crop&q=80&w=500'">
         <div class="card-content">
-            <h3 class="card-title">{{ product.name_zh }}</h3>
+            <h3 class="card-title" style="margin-bottom: 0.3rem;">{{ product.name_zh }}</h3>
             {% if product.name_en %}
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">{{ product.name_en }}</p>
+                <p style="font-size: 0.85rem; color: #999; margin-bottom: 0.8rem; font-style: italic;">{{ product.name_en }}</p>
             {% endif %}
-            <p style="font-size: 0.85rem; margin-bottom: 1rem;">
-                {{ product.benefits if product.benefits else '天然漢方調理，守護您的健康。' }}
+            
+            <p class="card-text" style="font-size: 0.9rem; min-height: 3em;">
+                {{ product.benefits if product.benefits else '精選高品質漢方材料，遵循傳統工法炮製，溫和調理體質。' }}
             </p>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="color: var(--color-red); font-weight: bold;">
-                    {{ 'RM ' ~ "{:.2f}".format(product.price_rm) if product.price_rm else '諮詢面議lo' }}
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-beige); padding-top: 1rem; margin-top: 0.5rem;">
+                <span style="color: var(--color-red); font-weight: 700; font-size: 1.2rem;">
+                    {% if product.price_rm %}
+                        RM {{ "{:.2f}".format(product.price_rm) }}
+                    {% else %}
+                        價格洽詢
+                    {% endif %}
                 </span>
                 {% if product.volume_size %}
-                    <span style="font-size: 0.8rem; color: #888;">{{ product.volume_size }}</span>
+                    <span style="font-size: 0.8rem; background: var(--color-beige); padding: 0.2rem 0.5rem; border-radius: 4px; color: #666;">
+                        {{ product.volume_size }}
+                    </span>
                 {% endif %}
             </div>
+            
+            <button class="btn btn-outline" style="width: 100%; margin-top: 1.5rem; padding: 0.6rem;" onclick="window.location.href='/contact'">
+                立即詢問
+            </button>
         </div>
     </div>
 {% endfor %}
