@@ -10,7 +10,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-red': '#A33327',
+                        'brand-khaki': '#D9C5A0',
+                        'brand-beige': '#F5EFE6',
+                        'brand-gold': '#C5A059',
+                        'brand-green': '#A3B899',
+                        'brand-gray': '#333333',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        :root {
+            --color-red: #A33327;
+            --color-khaki: #D9C5A0;
+            --color-beige: #F5EFE6;
+            --color-gold: #C5A059;
+            --color-light-green: #A3B899;
+            --color-dark-gray: #333333;
+            --font-primary: 'Noto Serif TC', serif;
+        }
         /* Dropdown styling */
         .nav-item { position: relative; }
         .dropdown {
