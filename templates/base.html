@@ -184,6 +184,76 @@
 
     <script src="/static/js/main.js"></script>
 
+    <!-- Chatbot Floating UI -->
+    <div x-data="{ openChat: false, message: '' }" class="fixed bottom-4 right-4 z-[9998]">
+        <!-- Chat Trigger Button -->
+        <button @click="openChat = !openChat" 
+                class="bg-brand-red text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform active:scale-95 flex items-center justify-center">
+            <svg x-show="!openChat" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            <svg x-show="openChat" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <!-- Chat Window -->
+        <div x-show="openChat" 
+             x-cloak
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-8 scale-95"
+             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+             class="absolute bottom-20 right-0 w-[350px] md:w-[400px] bg-white rounded-2xl shadow-2xl border border-brand-khaki overflow-hidden flex flex-col max-h-[500px]">
+            
+            <!-- Header -->
+            <div class="bg-brand-red p-4 text-white flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-khaki rounded-full flex items-center justify-center text-brand-red font-bold">金</div>
+                <div>
+                    <h4 class="font-bold text-sm">金燕中醫 在線客服</h4>
+                    <p class="text-[10px] opacity-80">通常會在幾秒內回覆</p>
+                </div>
+            </div>
+
+            <!-- Chat History -->
+            <div id="chat-history" class="flex-grow overflow-y-auto p-4 bg-brand-beige/30 space-y-4 h-[300px]">
+                <div class="flex justify-start mb-4">
+                    <div class="bg-brand-beige border border-brand-khaki text-brand-gray p-3 rounded-2xl rounded-tl-none max-w-[80%] shadow-sm">
+                        <p class="text-sm">您好！我是金燕客服。請問有什麼我可以幫您的嗎？不論是產品詢問或是醫師專業諮詢，都可以問我喔！✨</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="chat-indicator" class="htmx-indicator px-4 py-2 text-xs text-gray-400 italic flex items-center gap-2">
+                <div class="flex gap-1">
+                    <div class="w-1.5 h-1.5 bg-brand-red rounded-full animate-bounce"></div>
+                    <div class="w-1.5 h-1.5 bg-brand-red rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                    <div class="w-1.5 h-1.5 bg-brand-red rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                </div>
+                金燕正在思考中...
+            </div>
+
+            <!-- Input Area -->
+            <form hx-post="/api/chat" 
+                  hx-target="#chat-history" 
+                  hx-swap="beforeend" 
+                  hx-indicator="#chat-indicator"
+                  hx-on::after-request="this.reset(); document.getElementById('chat-history').scrollTop = document.getElementById('chat-history').scrollHeight"
+                  class="p-4 border-t border-brand-khaki flex gap-2 bg-white">
+                <input type="text" 
+                       name="message" 
+                       placeholder="請輸入您的問題..." 
+                       class="flex-grow border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand-red"
+                       required>
+                <button type="submit" class="bg-brand-red text-white p-2 rounded-full hover:bg-brand-gold transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Centered Disclaimer Modal -->
     <div x-data="{ showGuide: true }" 
          x-show="showGuide"

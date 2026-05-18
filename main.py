@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from routers import web, htmx
+from routers import web, htmx, api
 
 # Robust BASE_DIR detection for Vercel vs Local
 current_file = Path(__file__).resolve()
@@ -21,6 +21,7 @@ if static_dir.exists():
 # Include routers
 app.include_router(web.router)
 app.include_router(htmx.router)
+app.include_router(api.router)
 
 if __name__ == "__main__":
     import uvicorn
