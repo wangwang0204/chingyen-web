@@ -185,69 +185,79 @@
     <script src="/static/js/main.js"></script>
 
     <!-- Chatbot Floating UI -->
-    <div x-data="{ openChat: false, message: '' }" class="fixed bottom-4 right-4 z-[9998]">
+    <div x-data="{ openChat: true, message: '' }" class="fixed bottom-4 right-4 z-[9998]">
         <!-- Chat Trigger Button -->
         <button @click="openChat = !openChat" 
-                class="bg-brand-red text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform active:scale-95 flex items-center justify-center">
-            <svg x-show="!openChat" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                class="bg-brand-red text-white p-5 rounded-full shadow-[0_10px_40px_rgba(163,51,39,0.5)] hover:scale-110 transition-transform active:scale-95 flex items-center justify-center border-4 border-white">
+            <svg x-show="!openChat" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
-            <svg x-show="openChat" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg x-show="openChat" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
 
-        <!-- Chat Window -->
+        <!-- Chat Window (Larger & More Prominent) -->
         <div x-show="openChat" 
              x-cloak
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0 translate-y-8 scale-95"
              x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-             class="absolute bottom-20 right-0 w-[350px] md:w-[400px] bg-white rounded-2xl shadow-2xl border border-brand-khaki overflow-hidden flex flex-col max-h-[500px]">
+             class="absolute bottom-24 right-0 w-[90vw] md:w-[450px] bg-white rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.25)] border-2 border-brand-khaki overflow-hidden flex flex-col max-h-[650px]">
             
-            <!-- Header -->
-            <div class="bg-brand-red p-4 text-white flex items-center gap-3">
-                <div class="w-10 h-10 bg-brand-khaki rounded-full flex items-center justify-center text-brand-red font-bold">金</div>
-                <div>
-                    <h4 class="font-bold text-sm">金燕中醫 在線客服</h4>
-                    <p class="text-[10px] opacity-80">通常會在幾秒內回覆</p>
+            <!-- Header (Enhanced) -->
+            <div class="bg-brand-red p-6 text-white flex items-center justify-between shadow-md">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-brand-khaki rounded-full flex items-center justify-center text-brand-red font-bold text-xl shadow-inner">金</div>
+                    <div>
+                        <h4 class="font-bold text-lg leading-none">金燕中醫 在線客服</h4>
+                        <div class="flex items-center gap-1.5 mt-1">
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                            <p class="text-[11px] opacity-90 font-medium">我們正在線上為您服務</p>
+                        </div>
+                    </div>
                 </div>
+                <button @click="openChat = false" class="text-white/60 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
             </div>
 
-            <!-- Chat History -->
-            <div id="chat-history" class="flex-grow overflow-y-auto p-4 bg-brand-beige/30 space-y-4 h-[300px]">
+            <!-- Chat History (Larger) -->
+            <div id="chat-history" class="flex-grow overflow-y-auto p-6 bg-brand-beige/20 space-y-5 h-[400px] scroll-smooth">
                 <div class="flex justify-start mb-4">
-                    <div class="bg-brand-beige border border-brand-khaki text-brand-gray p-3 rounded-2xl rounded-tl-none max-w-[80%] shadow-sm">
-                        <p class="text-sm">您好！我是金燕客服。請問有什麼我可以幫您的嗎？不論是產品詢問或是醫師專業諮詢，都可以問我喔！✨</p>
+                    <div class="bg-white border-2 border-brand-beige text-brand-gray p-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm leading-relaxed">
+                        <p class="text-[15px]">您好！我是金燕客服。請問有什麼我可以幫您的嗎？不論是產品詢問或是醫師專業諮詢，都可以問我喔！✨</p>
                     </div>
                 </div>
             </div>
 
             <!-- Loading Indicator -->
-            <div id="chat-indicator" class="htmx-indicator px-4 py-2 text-xs text-gray-400 italic flex items-center gap-2">
-                <div class="flex gap-1">
-                    <div class="w-1.5 h-1.5 bg-brand-red rounded-full animate-bounce"></div>
-                    <div class="w-1.5 h-1.5 bg-brand-red rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                    <div class="w-1.5 h-1.5 bg-brand-red rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+            <div id="chat-indicator" class="htmx-indicator px-6 py-2 text-xs text-brand-red font-semibold italic flex items-center gap-2 bg-brand-beige/10">
+                <div class="flex gap-1.5">
+                    <div class="w-2 h-2 bg-brand-red rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-brand-red rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                    <div class="w-2 h-2 bg-brand-red rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                 </div>
-                金燕正在思考中...
+                金燕中醫正在為您查詢...
             </div>
 
-            <!-- Input Area -->
+            <!-- Input Area (Refined) -->
             <form hx-post="/api/chat" 
                   hx-target="#chat-history" 
                   hx-swap="beforeend" 
                   hx-indicator="#chat-indicator"
                   hx-on::after-request="this.reset(); document.getElementById('chat-history').scrollTop = document.getElementById('chat-history').scrollHeight"
-                  class="p-4 border-t border-brand-khaki flex gap-2 bg-white">
+                  class="p-5 border-t border-brand-khaki flex gap-3 bg-white">
                 <input type="text" 
                        name="message" 
-                       placeholder="請輸入您的問題..." 
-                       class="flex-grow border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand-red"
+                       placeholder="輸入您的問題..." 
+                       class="flex-grow border-2 border-gray-100 rounded-2xl px-5 py-3 text-[15px] focus:outline-none focus:border-brand-red focus:ring-0 transition-all bg-gray-50"
                        required>
-                <button type="submit" class="bg-brand-red text-white p-2 rounded-full hover:bg-brand-gold transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                <button type="submit" class="bg-brand-red text-white p-3 rounded-2xl hover:bg-brand-gold transition-all shadow-lg active:scale-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform rotate-90" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                     </svg>
                 </button>
             </form>
@@ -255,7 +265,7 @@
     </div>
 
     <!-- Centered Disclaimer Modal -->
-    <div x-data="{ showGuide: true }" 
+    <div x-data="{ showGuide: !sessionStorage.getItem('guideSeen') }" 
          x-show="showGuide"
          class="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto"
          x-cloak>
@@ -298,7 +308,7 @@
                     </p>
                 </div>
 
-                <button @click="showGuide = false" 
+                <button @click="showGuide = false; sessionStorage.setItem('guideSeen', 'true')" 
                         class="w-full bg-brand-red text-white font-bold py-4 px-8 rounded-xl hover:bg-brand-gold transition-all active:scale-95 shadow-xl text-lg">
                     進入網站展示
                 </button>

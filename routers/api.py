@@ -3,11 +3,12 @@ import httpx
 from fastapi import APIRouter, Request, Form
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
+from dotenv import load_dotenv; load_dotenv()
 
 router = APIRouter(prefix="/api")
 
 OPEN_ROUTER_API_KEY = os.getenv("OPEN_ROUTER_API_KEY")
-MODEL_ID = "google/gemini-2.0-flash-lite-preview-02-05"
+MODEL_ID = "google/gemini-2.5-flash-lite"
 
 # 預植入的店內資訊，模擬「打開 DB 看」
 STORE_INFO = """
