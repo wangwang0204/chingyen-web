@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/store/hero-banner.jpg');">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem;">傳承漢方精華，守護家人健康</h1>
+    <p style="font-size: 1.25rem; margin-bottom: 2rem;">金燕 (Chingyen) 數位型錄 - 您最信賴的中醫藥夥伴</p>
+    <a href="/products" class="btn">瀏覽產品目錄</a>
+</section>
+
+<section style="margin-top: 4rem;">
+    <h2 style="text-align: center; color: var(--color-red); margin-bottom: 3rem;">我們的核心服務</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="card-content">
+                <h3 class="card-title">名貴藥材</h3>
+                <p>提供天池雪蛤膏、西藏冬蟲夏草、印尼金絲燕等頂級滋補藥材。</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h3 class="card-title">專業醫療</h3>
+                <p>擁有超過 20 年經驗的中醫師團隊，提供把脈、針灸與全方位體質調理。</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h3 class="card-title">養生配藥</h3>
+                <p>根據您的體質與需求，由專業中藥師為您量身打造專屬藥膳包。</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

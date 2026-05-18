@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h1 style="color: var(--color-red); margin-bottom: 2rem;">醫療團隊</h1>
+    <div class="grid">
+        {% for physician in physicians %}
+            <div class="card">
+                <img src="{{ physician.portrait_path or 'https://via.placeholder.com/300x400?text=Physician' }}" 
+                     alt="{{ physician.name }}" 
+                     class="card-image"
+                     style="height: 350px;">
+                <div class="card-content">
+                    <h3 class="card-title">{{ physician.name }} <span style="font-size: 0.9rem; color: #666; font-weight: normal;">{{ physician.title }}</span></h3>
+                    <p style="color: var(--color-gold); font-weight: bold; margin-bottom: 0.5rem;">從醫 {{ physician.experience_years }} 年</p>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;"><strong>學歷：</strong>{{ physician.education or '吉隆坡中醫學院' }}</p>
+                    <div>
+                        <strong>擅長：</strong>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                            {% for specialty in physician.specialties %}
+                                <span style="background: var(--color-beige); color: var(--color-red); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem;">
+                                    {{ specialty }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

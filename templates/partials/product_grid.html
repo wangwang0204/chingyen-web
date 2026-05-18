@@ -1,0 +1,24 @@
+{% for product in products %}
+    <div class="card">
+        <img src="{{ product.image_path or 'https://via.placeholder.com/300x200?text=Chingyen' }}" 
+             alt="{{ product.name_zh }}" 
+             class="card-image">
+        <div class="card-content">
+            <h3 class="card-title">{{ product.name_zh }}</h3>
+            {% if product.name_en %}
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">{{ product.name_en }}</p>
+            {% endif %}
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">
+                {{ product.benefits if product.benefits else '天然漢方調理，守護您的健康。' }}
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="color: var(--color-red); font-weight: bold;">
+                    {{ 'RM ' ~ "{:.2f}".format(product.price_rm) if product.price_rm else '諮詢面議lo' }}
+                </span>
+                {% if product.volume_size %}
+                    <span style="font-size: 0.8rem; color: #888;">{{ product.volume_size }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endfor %}

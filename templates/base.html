@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金燕 (Chingyen) 數位型錄</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        /* Dropdown styling */
+        .nav-item { position: relative; }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1001;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+        .nav-item:hover .dropdown { display: block; }
+        .dropdown li { padding: 0.5rem 1rem; }
+        .dropdown li a { color: var(--color-dark-gray) !important; font-size: 0.9rem; }
+        .dropdown li a:hover { color: var(--color-red) !important; }
+        
+        footer .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        footer h4 { color: var(--color-khaki); margin-bottom: 1rem; }
+        footer ul { list-style: none; }
+        footer ul li { margin-bottom: 0.5rem; font-size: 0.85rem; }
+        footer a { color: white; text-decoration: none; }
+    </style>
+</head>
+<body x-data="{ mobileMenuOpen: false }">
+    <header>
+        <nav>
+            <a href="/" class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <img src="/static/images/brand/logo.png" alt="金燕" style="height: 40px; width: auto; display: block;" onerror="this.style.display='none'">
+                <span>金燕 CHINGYEN</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-links">
+                {% for menu in menus %}
+                    <li class="nav-item">
+                        <a href="{{ '/products' if menu.id == 17 else ('/about' if menu.id == 11 else '/') }}">
+                            {{ menu.title }}
+                        </a>
+                        {% if menu.children %}
+                        <ul class="dropdown">
+                            {% for child in menu.children %}
+                                <li><a href="#">{{ child.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen">
+                <span x-show="!mobileMenuOpen">☰</span>
+                <span x-show="mobileMenuOpen">✕</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer style="background-color: var(--color-red); color: white; padding: 4rem 2rem 1rem; text-align: center; margin-top: 4rem;">
+        <div class="footer-grid">
+            {% for menu in menus %}
+            <div>
+                <h4>{{ menu.title }}</h4>
+                <ul>
+                    {% for child in menu.children %}
+                    <li><a href="#">{{ child.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+            <div>
+                <h4>語言版本</h4>
+                <ul>
+                    <li><a href="#">繁體中文</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 1rem;">
+        <p style="font-size: 0.8rem; opacity: 0.8;">&copy; 2024 金燕 (Chingyen). All rights reserved. | 版權所有</p>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

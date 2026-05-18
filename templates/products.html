@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h1 style="color: var(--color-red); margin-bottom: 2rem;">產品資訊</h1>
+    
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <button class="filter-btn active" 
+                hx-get="/htmx/products" 
+                hx-target="#product-grid"
+                @click="$el.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); $el.classList.add('active')">
+            全部
+        </button>
+        {% for category in categories %}
+            <button class="filter-btn" 
+                    hx-get="/htmx/products?category_id={{ category.id }}" 
+                    hx-target="#product-grid"
+                    @click="$el.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); $el.classList.add('active')">
+                {{ category.name_zh }}
+            </button>
+        {% endfor %}
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid">
+        {% include "partials/product_grid.html" %}
+    </div>
+</section>
+{% endblock %}
