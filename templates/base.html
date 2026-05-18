@@ -184,32 +184,53 @@
 
     <script src="/static/js/main.js"></script>
 
-    <!-- Floating Disclaimer Modal -->
+    <!-- Centered Disclaimer Modal -->
     <div x-data="{ showGuide: true }" 
          x-show="showGuide"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 transform translate-y-8"
-         x-transition:enter-end="opacity-100 transform translate-y-0"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100 transform translate-y-0"
-         x-transition:leave-end="opacity-0 transform translate-y-8"
-         class="fixed bottom-4 right-4 z-[9999] w-[calc(100%-2rem)] mx-4 md:mx-0 md:max-w-sm bg-brand-beige p-6 rounded-xl border-2 border-brand-khaki shadow-2xl"
+         class="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto"
          x-cloak>
-        <div class="flex items-start gap-4">
-            <div class="bg-brand-red text-white p-2 rounded-full shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-            <div>
-                <h3 class="text-brand-red font-bold text-lg mb-2">歡迎來到金燕數位型錄！✨</h3>
-                <p class="text-brand-gray text-sm leading-relaxed mb-4">
-                    目前的網頁內容其實跟科普文章沒有太大的直接關係，它僅僅是一個中藥材行的 MVP (最小可行性產品) 展示。<br><br>
-                    然而，這是一個起點。未來當網站擴充了會員登入、電商購物車或客服系統等複雜功能時，流量與架構的複雜度將大幅提升。屆時，就會需要導入文章中提到的 Docker、K8s 等進階部署技術來穩定系統，同時也必須具備嚴格的資料隱私與法律防護意識！
-                </p>
+        
+        <!-- Backdrop -->
+        <div x-show="showGuide"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+        <!-- Modal Card -->
+        <div x-show="showGuide"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+             x-transition:leave-end="opacity-0 scale-95 translate-y-4"
+             class="relative w-full max-w-lg bg-brand-beige p-8 md:p-10 rounded-2xl border-2 border-brand-khaki shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+            
+            <div class="text-center">
+                <div class="bg-brand-red text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                
+                <h3 class="text-brand-red font-bold text-2xl mb-4">歡迎來到金燕數位型錄！✨</h3>
+                
+                <div class="text-brand-gray text-left text-base leading-relaxed space-y-4 mb-8">
+                    <p>
+                        目前的網頁內容其實跟科普文章沒有太大的直接關係，它僅僅是一個中藥材行的 MVP (最小可行性產品) 展示。
+                    </p>
+                    <p class="bg-white/50 p-4 rounded-lg border border-brand-khaki/30 italic text-sm">
+                        然而，這是一個起點。未來當網站擴充了會員登入、電商購物車或客服系統等複雜功能時，流量與架構的複雜度將大幅提升。屆時，就會需要導入文章中提到的 Docker、K8s 等進階部署技術來穩定系統。
+                    </p>
+                </div>
+
                 <button @click="showGuide = false" 
-                        class="w-full bg-brand-red text-white font-bold py-2 px-6 rounded-lg hover:bg-brand-gold transition-all active:scale-95 shadow-md">
-                    我知道了
+                        class="w-full bg-brand-red text-white font-bold py-4 px-8 rounded-xl hover:bg-brand-gold transition-all active:scale-95 shadow-xl text-lg">
+                    進入網站展示
                 </button>
             </div>
         </div>
