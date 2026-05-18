@@ -12,20 +12,21 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-red': '#A33327',
-                        'brand-khaki': '#D9C5A0',
-                        'brand-beige': '#F5EFE6',
-                        'brand-gold': '#C5A059',
-                        'brand-green': '#A3B899',
-                        'brand-gray': '#333333',
-                    }
-                }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                red: '#A33327',
+                khaki: '#D9C5A0',
+                beige: '#F5EFE6',
+                gold: '#C5A059',
+                lightgreen: '#A3B899'
+              }
             }
+          }
         }
+      }
     </script>
     <style>
         :root {

@@ -1,66 +1,79 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-<section style="padding: 4rem 0;">
-    <div class="section-header">
-        <h1>聯絡我們</h1>
-        <p>我們隨時準備為您提供專業的健康建議</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; margin-top: 4rem; align-items: start;">
-        <div>
-            <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 2rem;">
-                <h3 style="color: var(--color-red); margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-beige); padding-bottom: 0.5rem;">門市資訊</h3>
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <p style="color: var(--color-gold); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">地址 Address</p>
-                    <p style="font-size: 1.1rem;">馬來西亞吉隆坡某某街道 123 號 (Sample Address)</p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <p style="color: var(--color-gold); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">電話 Phone</p>
-                    <p style="font-size: 1.1rem;">+60 3-XXXX XXXX</p>
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <p style="color: var(--color-gold); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">營業時間 Opening Hours</p>
-                    <p style="font-size: 1.1rem;">週一至週六 (Mon - Sat)<br>09:00 AM - 06:00 PM</p>
-                    <p style="color: #888; font-size: 0.9rem; margin-top: 0.5rem;">* 週日及國定假日休息</p>
-                </div>
-            </div>
-
-            <div style="background: var(--color-red); color: white; padding: 2.5rem; border-radius: 12px;">
-                <h3 style="color: var(--color-khaki); margin-bottom: 1rem;">緊急諮詢？</h3>
-                <p style="margin-bottom: 1.5rem;">如果您有急需處理的健康問題，請直接撥打我們的專線，我們將優先為您安排諮詢。</p>
-                <a href="tel:+60312345678" class="btn btn-primary" style="display: block; text-align: center;">立即撥打電話</a>
-            </div>
+<div class="container mx-auto px-4 md:px-8">
+    <section class="py-16 md:py-24">
+        <div class="border-l-4 border-brand-red pl-6 mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-brand-red">聯絡我們</h1>
+            <p class="text-gray-600 text-lg md:text-xl">我們隨時準備為您提供專業的健康建議</p>
         </div>
 
-        <div>
-            <!-- Google Maps Placeholder -->
-            <div style="width: 100%; height: 450px; background: #eee; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
-                <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1200" alt="Map Placeholder" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
-                <div style="position: absolute; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center;">
-                    <h4 style="color: var(--color-red); margin-bottom: 0.5rem;">金燕 CHINGYEN</h4>
-                    <p style="font-size: 0.9rem; color: #666;">點擊開啟導航 (Google Maps)</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 3rem;">
-                <h3 style="color: var(--color-red); margin-bottom: 1.5rem;">線上留言</h3>
-                <form style="display: grid; gap: 1rem;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <input type="text" placeholder="您的姓名" style="padding: 1rem; border: 1px solid #ddd; border-radius: 4px;">
-                        <input type="email" placeholder="電子郵件" style="padding: 1rem; border: 1px solid #ddd; border-radius: 4px;">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16 items-start">
+            <div class="space-y-8">
+                <div class="bg-white p-10 rounded-2xl shadow-lg border-b-8 border-brand-beige">
+                    <h3 class="text-2xl font-bold text-brand-red mb-8 border-b-2 border-brand-beige pb-4">門市資訊</h3>
+                    
+                    <div class="mb-8">
+                        <p class="text-brand-gold font-bold text-sm uppercase tracking-widest mb-2">地址 Address</p>
+                        <p class="text-xl text-gray-800">馬來西亞吉隆坡某某街道 123 號 (Sample Address)</p>
                     </div>
-                    <input type="text" placeholder="主旨" style="padding: 1rem; border: 1px solid #ddd; border-radius: 4px;">
-                    <textarea placeholder="您的需求或問題..." rows="5" style="padding: 1rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
-                    <button type="submit" class="btn btn-primary" style="padding: 1rem;">送出訊息</button>
-                </form>
+
+                    <div class="mb-8">
+                        <p class="text-brand-gold font-bold text-sm uppercase tracking-widest mb-2">電話 Phone</p>
+                        <p class="text-xl text-gray-800">+60 3-XXXX XXXX</p>
+                    </div>
+
+                    <div>
+                        <p class="text-brand-gold font-bold text-sm uppercase tracking-widest mb-2">營業時間 Opening Hours</p>
+                        <p class="text-xl text-gray-800">週一至週六 (Mon - Sat)<br>09:00 AM - 06:00 PM</p>
+                        <p class="text-gray-400 text-sm mt-3 italic">* 週日及國定假日休息</p>
+                    </div>
+                </div>
+
+                <div class="bg-brand-red text-white p-10 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-brand-khaki mb-4">緊急諮詢？</h3>
+                    <p class="text-lg mb-8 opacity-90 leading-relaxed">如果您有急需處理的健康問題，請直接撥打我們的專線，我們將優先為您安排諮詢。</p>
+                    <a href="tel:+60312345678" class="btn btn-primary w-full text-center text-xl py-4 block">立即撥打電話</a>
+                </div>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Google Maps Placeholder -->
+                <div class="w-full h-[450px] bg-gray-100 rounded-2xl shadow-inner relative overflow-hidden flex items-center justify-center group">
+                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1200" alt="Map Placeholder" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                    <div class="relative bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-2xl text-center max-w-xs">
+                        <h4 class="text-2xl font-bold text-brand-red mb-3">金燕 CHINGYEN</h4>
+                        <p class="text-gray-600 mb-6">點擊開啟導航 (Google Maps)</p>
+                        <a href="#" class="text-brand-red font-bold hover:underline">查看路線</a>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-3xl font-bold text-brand-red mb-8">線上留言</h3>
+                    <form class="grid gap-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-700">您的姓名 Name</label>
+                                <input type="text" placeholder="例如：王小明" class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-red focus:border-brand-red outline-none transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-700">電子郵件 Email</label>
+                                <input type="email" placeholder="example@mail.com" class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-red focus:border-brand-red outline-none transition-all">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-gray-700">主旨 Subject</label>
+                            <input type="text" placeholder="關於產品詢價、醫療預約..." class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-red focus:border-brand-red outline-none transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-gray-700">訊息內容 Message</label>
+                            <textarea placeholder="請詳細描述您的需求或問題..." rows="6" class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-red focus:border-brand-red outline-none transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full text-xl py-4 mt-4 shadow-lg active:scale-95 transition-transform">送出訊息 Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
 {% endblock %}

@@ -1,79 +1,81 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="hero-container">
-    <div class="hero-content">
-        <div class="hero-text">
-            <h1>傳承漢方精華<br>守護家人健康</h1>
-            <p>金燕 (Chingyen) 數位型錄 - 您最信賴的中醫藥夥伴。我們結合二十餘年的臨床經驗與高品質藥材，為您提供最專業的健康守護。</p>
-            <div style="display: flex; gap: 1rem;">
-                <a href="/products" class="btn btn-primary">瀏覽產品目錄</a>
-                <a href="/about" class="btn btn-outline" style="border-color: var(--color-khaki); color: var(--color-khaki);">了解關於我們</a>
+<section class="bg-brand-red py-16 md:py-24">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 text-left">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 text-brand-khaki">傳承漢方精華<br>守護家人健康</h1>
+                <p class="text-lg md:text-xl mb-10 text-white opacity-90">金燕 (Chingyen) 數位型錄 - 您最信賴的中醫藥夥伴。我們結合二十餘年的臨床經驗與高品質藥材，為您提供最專業的健康守護。</p>
+                <div class="flex gap-4">
+                    <a href="/products" class="btn btn-primary">瀏覽產品目錄</a>
+                    <a href="/about" class="btn btn-outline border-brand-khaki text-brand-khaki hover:bg-brand-khaki hover:text-brand-red transition-all">了解關於我們</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="/static/images/store/hero-banner.jpg" alt="金燕中醫藥" onerror="this.src='https://images.unsplash.com/photo-1512036667332-20aea31d90e3?auto=format&fit=crop&q=80&w=800'">
+            <div class="w-full md:w-1/2">
+                <img src="/static/images/store/hero-banner.jpg" alt="金燕中醫藥" class="w-full rounded-xl shadow-[20px_20px_0px_theme(colors.brand.khaki)]" onerror="this.src='https://images.unsplash.com/photo-1512036667332-20aea31d90e3?auto=format&fit=crop&q=80&w=800'">
+            </div>
         </div>
     </div>
 </section>
 
-<div class="container">
-    <section style="margin: 4rem 0;">
-        <div class="section-header">
-            <h2>我們的核心服務</h2>
-            <p>提供全方位的中醫藥解決方案</p>
+<div class="container mx-auto px-4 md:px-8">
+    <section class="py-16">
+        <div class="border-l-4 border-brand-red pl-6 mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-red">我們的核心服務</h2>
+            <p class="text-gray-600 text-lg">提供全方位的中醫藥解決方案</p>
         </div>
-        <div class="grid">
-            <div class="card">
-                <img src="/static/images/products/prod-pearl-birdnest.jpg" class="card-image" alt="名貴藥材" onerror="this.src='https://images.unsplash.com/photo-1502741126161-b048400d085d?auto=format&fit=crop&q=80&w=500'">
-                <div class="card-content">
-                    <h3 class="card-title">名貴藥材</h3>
-                    <p class="card-text">精選天池雪蛤膏、西藏冬蟲夏草、印尼金絲燕等頂級滋補藥材，品質嚴格把關。</p>
-                    <a href="/products" class="btn btn-outline">查看詳情</a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform">
+                <img src="/static/images/products/prod-pearl-birdnest.jpg" class="w-full h-64 object-cover" alt="名貴藥材" onerror="this.src='https://images.unsplash.com/photo-1502741126161-b048400d085d?auto=format&fit=crop&q=80&w=500'">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-brand-red">名貴藥材</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">精選天池雪蛤膏、西藏冬蟲夏草、印尼金絲燕等頂級滋補藥材，品質嚴格把關。</p>
+                    <a href="/products" class="btn btn-outline text-brand-red border-brand-red hover:bg-brand-red hover:text-white transition-all">查看詳情</a>
                 </div>
             </div>
-            <div class="card">
-                <img src="/static/images/team/doc-yan.jpg" class="card-image" alt="專業醫療" style="object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1e358ee?auto=format&fit=crop&q=80&w=500'">
-                <div class="card-content">
-                    <h3 class="card-title">專業醫療</h3>
-                    <p class="card-text">由顏成福、林美玉中醫師領軍，提供看體質把脈、針灸、婦兒科等專業診療。</p>
-                    <a href="/team" class="btn btn-outline">認識醫師</a>
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform">
+                <img src="/static/images/team/doc-yan.jpg" class="w-full h-64 object-cover" alt="專業醫療" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1e358ee?auto=format&fit=crop&q=80&w=500'">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-brand-red">專業醫療</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">由顏成福、林美玉中醫師領軍，提供看體質把脈、針灸、婦兒科等專業診療。</p>
+                    <a href="/team" class="btn btn-outline text-brand-red border-brand-red hover:bg-brand-red hover:text-white transition-all">認識醫師</a>
                 </div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&q=80&w=500" class="card-image" alt="養生配藥">
-                <div class="card-content">
-                    <h3 class="card-title">養生配藥</h3>
-                    <p class="card-text">根據個人體質與需求，由專業藥師為您量身打造專屬藥膳包與日常養生建議。</p>
-                    <a href="/contact" class="btn btn-outline">立即諮詢</a>
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform">
+                <img src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&q=80&w=500" class="w-full h-64 object-cover" alt="養生配藥">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-brand-red">養生配藥</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">根據個人體質與需求，由專業藥師為您量身打造專屬藥膳包與日常養生建議。</p>
+                    <a href="/contact" class="btn btn-outline text-brand-red border-brand-red hover:bg-brand-red hover:text-white transition-all">立即諮詢</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section style="margin: 6rem 0; background: white; padding: 4rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.03);">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-            <div>
-                <h2 style="font-size: 2.5rem; color: var(--color-red); margin-bottom: 1.5rem;">為何選擇金燕？</h2>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
-                        <span style="background: var(--color-red); color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">✓</span>
-                        <span>26 年深厚臨床經驗，看診精準</span>
+    <section class="py-16 my-16 bg-white rounded-2xl shadow-sm p-8 md:p-16">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl font-bold text-brand-red mb-8">為何選擇金燕？</h2>
+                <ul class="space-y-6">
+                    <li class="flex items-center gap-4 text-lg">
+                        <span class="bg-brand-red text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">✓</span>
+                        <span class="text-gray-700">26 年深厚臨床經驗，看診精準</span>
                     </li>
-                    <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
-                        <span style="background: var(--color-red); color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">✓</span>
-                        <span>嚴格篩選道地藥材，絕無人工添加</span>
+                    <li class="flex items-center gap-4 text-lg">
+                        <span class="bg-brand-red text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">✓</span>
+                        <span class="text-gray-700">嚴格篩選道地藥材，絕無人工添加</span>
                     </li>
-                    <li style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
-                        <span style="background: var(--color-red); color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold;">✓</span>
-                        <span>現代化管理流程，確保用藥安全</span>
+                    <li class="flex items-center gap-4 text-lg">
+                        <span class="bg-brand-red text-white w-8 h-8 flex items-center justify-center rounded-full font-bold flex-shrink-0">✓</span>
+                        <span class="text-gray-700">現代化管理流程，確保用藥安全</span>
                     </li>
                 </ul>
             </div>
-            <div style="text-align: center;">
-                <div style="border: 10px solid var(--color-beige); padding: 2rem; display: inline-block;">
-                    <p style="font-size: 3rem; font-weight: bold; color: var(--color-red); margin: 0;">26+</p>
-                    <p style="font-size: 1.1rem; color: #666; margin: 0;">Years of Excellence</p>
+            <div class="lg:w-1/2 text-center">
+                <div class="border-[10px] border-brand-beige p-8 inline-block">
+                    <p class="text-6xl font-bold text-brand-red mb-2">26+</p>
+                    <p class="text-xl text-gray-500 uppercase tracking-widest">Years of Excellence</p>
                 </div>
             </div>
         </div>
